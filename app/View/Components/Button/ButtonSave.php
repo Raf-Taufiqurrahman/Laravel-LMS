@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Button;
 
 use Illuminate\View\Component;
 
-class Button extends Component
+class ButtonSave extends Component
 {
     public $icon, $title;
     /**
@@ -25,6 +25,6 @@ class Button extends Component
      */
     public function render()
     {
-        return view('components.button');
+        return view('components.button.button-save');
     }
 }

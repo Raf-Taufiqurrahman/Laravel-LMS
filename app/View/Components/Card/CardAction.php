@@ -1,20 +1,21 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Card;
 
 use Illuminate\View\Component;
 
-class Card extends Component
+class CardAction extends Component
 {
-    public $title;
+    public $title, $url;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title)
+    public function __construct($title, $url)
     {
         $this->title = $title;
+        $this->url = $url;
     }
 
     /**
@@ -24,6 +25,6 @@ class Card extends Component
      */
     public function render()
     {
-        return view('components.card');
+        return view('components.card.card-action');
     }
 }

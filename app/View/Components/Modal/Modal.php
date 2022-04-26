@@ -1,21 +1,22 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Modal;
 
 use Illuminate\View\Component;
 
-class CardAction extends Component
+class Modal extends Component
 {
-    public $title, $url;
+    public $id, $title;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $url)
+    public function __construct($id, $title)
     {
+        $this->id = $id;
         $this->title = $title;
-        $this->url = $url;
     }
 
     /**
@@ -25,6 +26,6 @@ class CardAction extends Component
      */
     public function render()
     {
-        return view('components.card-action');
+        return view('components.modal.modal');
     }
 }
