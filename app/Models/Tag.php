@@ -12,4 +12,10 @@ class Tag extends Model
     use HasFactory, HasScope, HasSlug;
 
     protected $fillable = ['name', 'slug', 'color'];
+
+    // relationship with series
+    public function series()
+    {
+        return $this->belongsToMany(Series::class);
+    }
 }

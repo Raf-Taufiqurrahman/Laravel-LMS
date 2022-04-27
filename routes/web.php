@@ -25,7 +25,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',  'middleware' => ['auth']],
     // route dashbaord
     Route::get('dashboard', App\Http\Controllers\Admin\DashboardController::class)->name('dashboard');
     // route tags
-    Route::resource('tags', App\Http\Controllers\Admin\TagController::class);
+    Route::resource('tags', App\Http\Controllers\Admin\TagController::class)->except(['show','create','edit']);
+    // route series
+    Route::resource('series', App\Http\Controllers\Admin\SeriesController::class);
 });
 
 

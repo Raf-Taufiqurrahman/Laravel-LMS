@@ -4,21 +4,18 @@ namespace App\View\Components\Form;
 
 use Illuminate\View\Component;
 
-class Input extends Component
+class SelectAdvanced extends Component
 {
-    public $title, $name, $value, $placeholder, $type;
+    public $name, $title;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $name, $value, $placeholder, $type)
+    public function __construct($name, $title)
     {
-        $this->title = $title;
         $this->name = $name;
-        $this->value = $value;
-        $this->placeholder = $placeholder;
-        $this->type = $type;
+        $this->title = $title;
     }
 
     /**
@@ -28,6 +25,6 @@ class Input extends Component
      */
     public function render()
     {
-        return view('components.form.input');
+        return view('components.form.select-advanced');
     }
 }

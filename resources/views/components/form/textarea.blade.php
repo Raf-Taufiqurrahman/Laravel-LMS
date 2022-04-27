@@ -1,7 +1,7 @@
 <div class="mb-3">
     <label class="form-label">{{ $title }}</label>
-    <input type="{{ $type }}" class="form-control @error($name) is-invalid @enderror" name="{{ $name }}"
-        placeholder="{{ $placeholder }}" value="{{ $value }}">
+    <textarea class="form-control @error($name) is-invalid @enderror" name="{{ $name }}" rows="6"
+        placeholder="{{ $placeholder }}">{{ $slot }}</textarea>
     @error($name)
         <div class="invalid-feedback">
             {{ $message }}
