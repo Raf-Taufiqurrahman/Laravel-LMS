@@ -43,6 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // relationshop with series
+    public function series()
+    {
+        return $this->hasMany(Series::class);
+    }
+
     // generate avatar
     public function getAvatarAttribute($avatar)
     {

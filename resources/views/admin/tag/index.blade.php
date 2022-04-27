@@ -26,8 +26,8 @@
                                             <form action="{{ route('admin.tags.update', $tag->id) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
-                                                <x-form.input title="Tag Name" name="name" placeholder="Input tag name"
-                                                    value="{{ $tag->name }}" />
+                                                <x-form.input type="text" title="Tag Name" name="name"
+                                                    placeholder="Input tag name" value="{{ $tag->name }}" />
                                                 <x-button.button-save title="Save" icon="save" />
                                             </form>
                                         </x-modal.modal>
@@ -44,7 +44,7 @@
                 <x-card.card title="Create New Tag">
                     <form action="{{ route('admin.tags.store') }}" method="POST">
                         @csrf
-                        <x-form.input title="Tag Name" name="name" placeholder="Input tag name" value="" />
+                        <x-form.input type="text" title="Tag Name" name="name" placeholder="Input tag name" value="" />
                         <x-button.button-save icon="save" title="Save" />
                     </form>
                 </x-card.card>
