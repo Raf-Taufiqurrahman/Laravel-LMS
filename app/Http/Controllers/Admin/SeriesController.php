@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Tag;
+use App\Models\Video;
 use App\Models\Series;
 use App\Traits\HasCover;
 use Illuminate\Http\Request;
@@ -78,9 +79,13 @@ class SeriesController extends Controller
      * @param  \App\Models\Series  $series
      * @return \Illuminate\Http\Response
      */
-    public function show(Series $seriess)
+    public function show($slug)
     {
-        //
+        $series = Series::where('slug', $slug)->first();
+
+        $videos = Video::where('series_id', $series->id)->orderBy('episode')->paginate(10);
+
+        return view('admin.series.show', compact('series', 'videos'));
     }
 
     /**
@@ -165,7 +170,7 @@ class SeriesController extends Controller
         // delete series cover by id
         Storage::disk('local')->delete('public/covers/'. basename($series->cover));
 
-        // return redirect back
+        // return redirect back with toastr
         return back()->with('toast_success', 'Series deleted successfully');
     }
 }

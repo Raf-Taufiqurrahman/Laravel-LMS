@@ -40,4 +40,10 @@ class Series extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // relationship with videos
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
 }

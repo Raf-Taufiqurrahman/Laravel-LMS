@@ -35,7 +35,11 @@
                                                 class="img-fluid" />
                                         </x-modal.modal>
                                     </td>
-                                    <td>{{ $data->name }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.series.show', $data->slug) }}" class="text-dark">
+                                            {{ $data->name }}
+                                        </a>
+                                    </td>
                                     <td>
                                         @foreach ($data->tags as $tag)
                                             <li>
@@ -50,10 +54,16 @@
                                         {{ $data->status == '1' ? 'Completed' : 'Developed' }}
                                     </td>
                                     <td>
-                                        <x-button.button-link url="{{ route('admin.series.edit', $data->slug) }}"
-                                            title="Edit" icon="save" />
-                                        <x-button.button-delete id="{{ $data->id }}"
-                                            url="{{ route('admin.series.destroy', $data->id) }}" title="Delete" />
+                                        <x-button.button-dropdown title="Actions" class="btn btn-primary" icon="list">
+                                            <x-button.button-link class="dropdown-item" title="Add Video"
+                                                url="{{ route('admin.videos.create', $data->slug) }}"
+                                                icon="play-circle" />
+                                            <x-button.button-link class="dropdown-item" title="Edit "
+                                                url="{{ route('admin.series.edit', $data->slug) }}" icon="edit" />
+                                            <x-button.button-delete id="{{ $data->id }}"
+                                                url="{{ route('admin.series.destroy', $data->id) }}" title="Delete"
+                                                class="dropdown-item" />
+                                        </x-button.button-dropdown>
                                     </td>
                                 </tr>
                             @endforeach
