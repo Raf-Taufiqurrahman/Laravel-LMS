@@ -1,5 +1,5 @@
-<a href="#" onclick="deleteData({{ $id }})" class="text-danger">
-    <i class="fas fa-eraser mr-1"></i>
+<a href="#" onclick="deleteData({{ $id }})" {{ $attributes->merge(['class' => '']) }}>
+    <i class="fas fa-eraser mr-2"></i>
     {{ $title }}
 </a>
 <form id="delete-form-{{ $id }}" action="{{ $url }}" method="POST" style="display:none;">

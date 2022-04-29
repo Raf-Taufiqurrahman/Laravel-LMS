@@ -1,4 +1,4 @@
-<a href="{{ $url }}" {{ $attributes->merge(['class' => 'text-teal mr-2']) }}>
-    <i class=" fas fa-{{ $icon }} mr-1"></i>
+<a href="{{ $url }}" {{ $attributes->merge(['class' => '']) }}>
+    <i class=" fas fa-{{ $icon }} mr-2"></i>
     {{ $title }}
 </a>

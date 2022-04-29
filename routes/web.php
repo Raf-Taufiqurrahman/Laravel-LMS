@@ -28,6 +28,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',  'middleware' => ['auth']],
     Route::resource('tags', App\Http\Controllers\Admin\TagController::class)->except(['show','create','edit']);
     // route series
     Route::resource('series', App\Http\Controllers\Admin\SeriesController::class);
+    // route videos
+    Route::controller(App\Http\Controllers\Admin\VideoController::class)->prefix('videos')->group(function(){
+        // add videos by slug series
+        Route::get('add/{series:slug}', 'create')->name('videos.create');
+        Route::post('add/{series:slug}', 'store')->name('videos.store');
+        // delete videos
+        Route::delete('delete/{video:id}', 'destroy')->name('videos.destroy');
+        // edit videos
+        Route::get('edit/{series:slug}/{video:video_code}', 'edit')->name('videos.edit');
+    });
 });
 
 
