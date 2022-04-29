@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+// route landing
+Route::get('/', App\Http\Controllers\LandingController::class)->name('landing');
+// route series
+Route::controller(App\Http\Controllers\SeriesController::class)->prefix('series')->group(function(){
+    Route::get('{series:slug}', 'show')->name('series.show');
+    Route::get('{series:slug}/{videos:episode}', 'video')->name('series.video');
 });
 
+// route auth
 Auth::routes();
 
 // route group for admin and instructor
