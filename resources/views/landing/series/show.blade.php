@@ -17,13 +17,21 @@
                             <x-utilities.item date="{{ $series->created_at->format('d F Y') }}"
                                 level="{{ $series->level }}"
                                 status="{{ $series->status == 1 ? 'Compeleted' : 'Developed' }}"
-                                episode="{{ $series->videos->count() }} Episode" members="0 Members" />
+                                episode="{{ $series->videos->count() }} Episode" members="{{ $members }} Members" />
                             <div class="mt-2">
-                                <form action="#" method="POST">
-                                    @csrf
-                                    <x-button.button-save icon="shopping-cart" title="Buy Now"
-                                        class="btn btn-outline-primary" />
-                                </form>
+                                @if ($userSeries->count() > 0)
+                                    <div class="alert alert-success" role="alert">
+                                        <i class="fas fa-user-check mr-1"></i>
+                                        Licensed to : {{ Auth::user()->name }} ({{ Auth::user()->email }}) —
+                                        {{ Carbon\Carbon::parse($userSeries[0]->date_transfer ?? '')->format('d F Y') }}
+                                    </div>
+                                @else
+                                    <form action="{{ route('carts.store', $series->slug) }}" method="POST">
+                                        @csrf
+                                        <x-button.button-save icon="shopping-cart" title="Buy Now"
+                                            class="btn btn-outline-primary" />
+                                    </form>
+                                @endif
                             </div>
                         </div>
                         <div class="col-5">

@@ -7,8 +7,9 @@
         <div class="row">
             <div class="col-12">
                 <x-card.card title="Eps : {{ $video->episode }} {{ $video->name }} - {{ $series->name }}">
-                    <form action="{{ route('admin.videos.store', $series->slug) }}" method="POST">
+                    <form action="{{ route('admin.videos.update', [$series->slug, $video->video_code]) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <x-form.input type="text" title="Video Name" name="name" value="{{ $video->name }}"
                             placeholder="Input video name" />
                         <x-form.input type="text" title="Video Code" name="video_code" value="{{ $video->video_code }}"

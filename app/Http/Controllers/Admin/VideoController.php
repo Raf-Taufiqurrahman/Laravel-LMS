@@ -48,6 +48,26 @@ class VideoController extends Controller
         return view('admin.video.edit', compact('series', 'video'));
     }
 
+    public function update(Request $request, $slug, $video_code)
+    {
+        // get series by slug
+        $series = Series::where('slug', $slug)->first();
+
+        // get video by video_code
+        $video = Video::where('video_code', $video_code)->first();
+
+        $video->update([
+            'name' => $request->name,
+            'video_code' => $request->video_code,
+            'episode' => $request->episode,
+            'duration' => $request->duration,
+            'intro' => $request->intro ? 1 : 0
+        ]);
+
+        // return view with series and video
+        return redirect(route('admin.series.show', $series->slug))->with('toast_success', 'Video updated successfully ');
+    }
+
     public function destroy(video $video)
     {
         // delete video by id
