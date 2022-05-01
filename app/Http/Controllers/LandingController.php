@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Video;
 use App\Models\Series;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -14,9 +14,12 @@ class LandingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, Series $series)
     {
-        $series = Series::with('videos')->latest()->paginate(6);
+        // get all series
+        $series = Series::with('videos')->latest()->take(6)->get();
+
+        // return to landing page
         return view('landing.index', compact('series'));
     }
 }

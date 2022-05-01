@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a href="/" class="navbar-brand navbar-brand-autodark">
-            <img src="{{ asset('static/logo-white.svg') }}" alt="Tabler" class="navbar-brand-image">
+            <h2 class="font-weight-bold text-azure">Raptri<span class="text-red">Dev</span></h2>
         </a>
         <div class="navbar-nav flex-row d-lg-none">
             <div class="nav-item dropdown">

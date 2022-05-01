@@ -3,8 +3,11 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="#" class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
+        {{-- <a href="#" class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
             <img src="{{ asset('static/logo.svg') }}" alt="Tabler" class="navbar-brand-image">
+        </a> --}}
+        <a href="/" class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3 mt-2">
+            <h2 class="font-weight-bold text-azure">Raptri<span class="text-red">Dev</span></h2>
         </a>
         <div class="navbar-nav flex-row order-md-last">
             @guest
@@ -13,7 +16,7 @@
             @endguest
             @auth
                 <div class="nav-item dropdown d-none d-md-flex mr-3">
-                    <a href="#" class="nav-link px-0">
+                    <a href="{{ route('carts.index') }}" class="nav-link px-0">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart"
                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -23,7 +26,7 @@
                             <path d="M17 17h-11v-14h-2"></path>
                             <path d="M6 5l14 1l-1 7h-13"></path>
                         </svg>
-                        <span class="badge bg-red">#</span>
+                        <span class="badge bg-red">{{ Auth::user()->carts()->count() }}</span>
                     </a>
                 </div>
                 <div class="nav-item dropdown">
@@ -50,7 +53,7 @@
                                 Dashboard
                             </a>
                         @else
-                            <a class="dropdown-item" href="{{ route('user.dashboard') }}">
+                            <a class="dropdown-item" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
                                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -90,7 +93,7 @@
         <div class="container-xl">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link {{ Route::is('landing') ? 'active' : '' }}" href="/">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -107,7 +110,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link  {{ Route::is('series*') ? 'active' : '' }}"
+                        href="{{ route('series.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-certificate"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -129,7 +133,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">
+                    <a class="nav-link" href="#">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="24"
                                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"

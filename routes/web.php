@@ -17,9 +17,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', App\Http\Controllers\LandingController::class)->name('landing');
 // route series
 Route::controller(App\Http\Controllers\SeriesController::class)->prefix('series')->group(function(){
+    Route::get('/', 'index')->name('series.index');
     Route::get('{series:slug}', 'show')->name('series.show');
-    Route::get('{series:slug}/{videos:episode}', 'video')->name('series.video');
+    Route::get('{series:slug}/{videos:episode}', 'video')->name('series.video')->middleware('auth');
 });
+// route carts
+Route::controller(App\Http\Controllers\CartController::class)->prefix('carts')->middleware('auth')->group(function(){
+    Route::get('/', 'index')->name('carts.index');
+    Route::post('/{series:slug}', 'store')->name('carts.store');
+    Route::delete('destroy/{cart:id}', 'destroy')->name('carts.destroy');
+});
+
+Route::post('transactions/store', [App\Http\Controllers\TransactionsController::class, 'store'])
+    ->name('transactions.store')->middleware('auth');
+
+// Route::controller(App\Http\Controllers\TransactionController::class)->prefix('transactions')->middleware()->group(function(){
+//     Route::post('/store', 'store')->name('transactions.store');
+// });
 
 // route auth
 Auth::routes();
@@ -41,6 +55,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',  'middleware' => ['auth']],
         Route::delete('delete/{video:id}', 'destroy')->name('videos.destroy');
         // edit videos
         Route::get('edit/{series:slug}/{video:video_code}', 'edit')->name('videos.edit');
+        Route::put('{series:slug}/{video:video_code}', 'upda')->name('videos.update');
     });
 });
 

@@ -51,6 +51,7 @@
             <!-- alert -->
             @include('sweetalert::alert')
         </div>
+
     </div>
 
     <!-- Libs JS -->

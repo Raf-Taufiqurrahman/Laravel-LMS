@@ -46,4 +46,10 @@ class Series extends Model
     {
         return $this->hasMany(Video::class);
     }
+
+    // relationship with carts
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
