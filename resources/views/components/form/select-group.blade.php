@@ -1,6 +1,6 @@
 <div class="mb-3">
     <label class="form-label">
-        Series Level
+        {{ $title }}
     </label>
     <div class="form-selectgroup">
         {{ $slot }}

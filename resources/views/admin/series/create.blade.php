@@ -29,7 +29,7 @@
                             placeholder="Input series description" />
                         <div class="row">
                             <div class="col-6">
-                                <x-form.select-group>
+                                <x-form.select-group title="Series Level">
                                     <label class="form-selectgroup-item">
                                         <input type="radio" name="level" value="Beginner" class="form-selectgroup-input">
                                         <span class="form-selectgroup-label">
