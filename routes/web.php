@@ -28,12 +28,8 @@ Route::controller(App\Http\Controllers\CartController::class)->prefix('carts')->
     Route::delete('destroy/{cart:id}', 'destroy')->name('carts.destroy');
 });
 
-Route::post('transactions/store', [App\Http\Controllers\TransactionsController::class, 'store'])
+Route::post('transactions/store', [App\Http\Controllers\TransactionController::class, 'store'])
     ->name('transactions.store')->middleware('auth');
-
-// Route::controller(App\Http\Controllers\TransactionController::class)->prefix('transactions')->middleware()->group(function(){
-//     Route::post('/store', 'store')->name('transactions.store');
-// });
 
 // route auth
 Auth::routes();
@@ -57,6 +53,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',  'middleware' => ['auth']],
         Route::get('edit/{series:slug}/{video:video_code}', 'edit')->name('videos.edit');
         Route::put('{series:slug}/{video:video_code}', 'upda')->name('videos.update');
     });
+    // route users
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class)->only('index', 'update');
+    // route roles
+    Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
+    // route permissions
+    Route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
 });
 
 
