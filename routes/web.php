@@ -56,9 +56,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',  'middleware' => ['auth']],
     // route users
     Route::resource('users', App\Http\Controllers\Admin\UserController::class)->only('index', 'update');
     // route roles
-    Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
+    Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
     // route permissions
-    Route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
+    Route::resource('permissions', App\Http\Controllers\Admin\PermissionController::class);
+    // route transactions
+    Route::resource('transactions', App\Http\Controllers\Admin\TransactionController::class);
 });
 
 

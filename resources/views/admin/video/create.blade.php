@@ -29,7 +29,10 @@
                                 <span class="form-check-label">Make this to intro video</span>
                             </label>
                         </x-form.checkbox>
-                        <x-button.button-save title="Save" icon="save" />
+                        <x-button.button-save title="Save" icon="save" class="btn btn-primary" />
+                        <x-button.button-link class="btn btn-dark text-white" title="Go Back" icon="arrow-left"
+                            url="{{ route('admin.series.index') }}">
+                        </x-button.button-link>
                     </form>
                 </x-card.card>
             </div>

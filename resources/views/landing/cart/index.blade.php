@@ -31,25 +31,12 @@
                                         <p class="strong mb-1">{{ $cart->series->name }}</p>
                                     </td>
                                     <td class="text-end">
-                                        <s class="text-danger">
-                                            Rp. {{ number_format($cart->price) }}
-                                        </s>
-                                        <div class="text-primary">
+                                        <div class="text-dark">
                                             Rp. {{ number_format($cart->price) }}
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr>
-                                <td colspan="2" class="strong text-end">Total</td>
-                                <td class="text-end font-weight-bold text-primary">
-                                    Rp. {{ number_format($grandTotal) }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="strong text-end">Diskon</td>
-                                <td class="text-end text-danger">0%</td>
-                            </tr>
                             <tr>
                                 <td colspan="2" class="font-weight-bold text-uppercase text-end">
                                     Grand Total
@@ -71,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="avatar">
-                                <img src="{{ asset('dist/img/payments/amazon-dark.svg') }}" />
+                                <img src="{{ asset('dist/img/payments/livin.png') }}" />
                             </div>
                         </div>
                         <hr class="mt-2 mb-2" />
@@ -95,7 +82,7 @@
                                 </div>
                             </div>
                             <span class="avatar">
-                                <img src="{{ asset('dist/img/payments/paypal.svg') }}" />
+                                <img src="{{ asset('dist/img/payments/ovo.png') }}" />
                             </span>
                         </div>
                     </div>

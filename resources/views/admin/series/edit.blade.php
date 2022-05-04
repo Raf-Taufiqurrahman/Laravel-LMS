@@ -37,7 +37,7 @@
                         </x-form.textarea>
                         <div class="row">
                             <div class="col-6">
-                                <x-form.select-group>
+                                <x-form.select-group title="Series Level">
                                     <label class="form-selectgroup-item">
                                         <input type="radio" name="level" value="Beginner" class="form-selectgroup-input"
                                             {{ $series->level == 'Beginner' ? 'checked' : '' }}>
@@ -76,7 +76,7 @@
                                 </x-form.checkbox>
                             </div>
                         </div>
-                        <x-button.button-save title="Save" icon="save" />
+                        <x-button.button-save title="Save" icon="save" class="btn-primary" />
                         <x-button.button-link class="btn btn-dark text-white" title="Go Back" icon="arrow-left"
                             url="{{ route('admin.series.index') }}">
                         </x-button.button-link>

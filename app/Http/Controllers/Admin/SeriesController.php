@@ -81,10 +81,13 @@ class SeriesController extends Controller
      */
     public function show($slug)
     {
+        // get series by slug
         $series = Series::where('slug', $slug)->first();
 
+        // get videos by series order by episode
         $videos = Video::where('series_id', $series->id)->orderBy('episode')->paginate(10);
 
+        // return view
         return view('admin.series.show', compact('series', 'videos'));
     }
 

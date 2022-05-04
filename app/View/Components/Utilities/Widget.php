@@ -1,23 +1,21 @@
 <?php
 
-namespace App\View\Components\Alert;
+namespace App\View\Components\Utilities;
 
 use Illuminate\View\Component;
 
-class AlertDanger extends Component
+class Widget extends Component
 {
-    public $title, $subTitle, $url, $icon;
+    public $title, $subTitle;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $subTitle, $url, $icon)
+    public function __construct($title, $subTitle)
     {
         $this->title = $title;
         $this->subTitle = $subTitle;
-        $this->url = $url;
-        $this->icon = $icon;
     }
 
     /**
@@ -27,6 +25,6 @@ class AlertDanger extends Component
      */
     public function render()
     {
-        return view('components.alert.alert-danger');
+        return view('components.utilities.widget');
     }
 }
