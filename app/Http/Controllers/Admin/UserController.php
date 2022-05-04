@@ -16,12 +16,15 @@ class UserController extends Controller
      */
     public function index()
     {
+        // get all users with roles, search and paginate
         $users = User::with('roles')->when(request()->q, function($search){
             $search = $search->where('name', 'like', '%'.request()->q.'%');
         })->paginate(10);
 
+        // get all roles
         $roles = Role::get();
 
+        // return view
         return view('admin.user.index', compact('users', 'roles'));
     }
 

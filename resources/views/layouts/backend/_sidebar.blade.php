@@ -50,7 +50,8 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link {{ Route::is('admin.dashboard') ? 'active' : '' }}"
+                        href="{{ route('admin.dashboard') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="icon icon-tabler icon-tabler-layout-dashboard" width="24" height="24"
@@ -70,7 +71,8 @@
                 </li>
                 <div class="hr-text hr-text-left ml-2 mb-2 mt-3">Master Data</div>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.tags.index') }}">
+                    <a class="nav-link {{ Route::is('admin.tags*') ? 'active' : '' }}"
+                        href="{{ route('admin.tags.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tags" width="24"
                                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -89,7 +91,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.series.index') }}">
+                    <a class="nav-link {{ Route::is('admin.series*') ? 'active' : '' }}"
+                        href="{{ route('admin.series.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-playlist"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -109,7 +112,8 @@
                 </li>
                 <div class="hr-text hr-text-left ml-2 mb-2 mt-3">User Management</div>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.roles.index') }}">
+                    <a class="nav-link {{ Route::is('admin.roles*') ? 'active' : '' }}"
+                        href="{{ route('admin.roles.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-accessible"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -126,7 +130,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.permissions.index') }}">
+                    <a class="nav-link {{ Route::is('admin.permissions*') ? 'active' : '' }}"
+                        href="{{ route('admin.permissions.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-lock"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -145,7 +150,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.users.index') }}">
+                    <a class="nav-link {{ Route::is('admin.users*') ? 'active' : '' }}"
+                        href="{{ route('admin.users.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -159,6 +165,25 @@
                         </span>
                         <span class="nav-link-title">
                             Users
+                        </span>
+                    </a>
+                </li>
+                <div class="hr-text hr-text-left ml-2 mb-2 mt-3">Transaction</div>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('admin.transactions*') ? 'active' : '' }}"
+                        href="{{ route('admin.transactions.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cash" width="24"
+                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <rect x="7" y="9" width="14" height="10" rx="2"></rect>
+                                <circle cx="14" cy="14" r="2"></circle>
+                                <path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Transactions
                         </span>
                     </a>
                 </li>

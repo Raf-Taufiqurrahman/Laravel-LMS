@@ -51,6 +51,6 @@ class TransactionController extends Controller
         Cart::where('user_id', Auth::id())->delete();
 
         // return to landing page
-        return redirect(route('landing'))->with('success', 'Your Payment has been verified. Thank you for your purchase!');
+        return redirect(route('landing'))->with('success', 'Thank you for your purchase!');
     }
 }

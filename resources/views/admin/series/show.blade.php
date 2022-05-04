@@ -19,8 +19,8 @@
                                     class="dropdown-item" />
                             </x-card.card-list-item>
                         @empty
-                            <x-alert.alert-danger title="This Series don't have any video" icon="play-circle"
-                                subTitle="Create new video" />
+                            <x-alert.alert-danger title="This Series don't have any video" subTitle="Create new video"
+                                url="{{ route('admin.videos.create', $series->slug) }}" icon="play-circle" />
                         @endforelse
                     </x-card.card-list>
                 </x-card.card>
