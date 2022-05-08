@@ -34,7 +34,7 @@
                         <span class="avatar" style="background-image: url({{ Auth::user()->avatar }})"></span>
                         <div class="d-none d-xl-block pl-2">
                             <div>{{ Auth::user()->name }}</div>
-                            <div class="mt-1 small text-muted">UI Designer</div>
+                            <div class="mt-1 small text-muted">{{ Auth::user()->email }}</div>
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -153,7 +153,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+            {{-- <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
                 <form action="." method="get">
                     <div class="input-icon">
                         <span class="input-icon-addon">
@@ -168,7 +168,7 @@
                         <input type="text" class="form-control" placeholder="Search…">
                     </div>
                 </form>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
