@@ -1,37 +1,20 @@
-@extends('layouts.frontend.master')
+@extends('layouts.backend.master')
 
-@section('title', 'Homepage')
-
-@section('hero')
-    @include('layouts.frontend._hero')
-@endsection
+@section('title', 'Series')
 
 @section('content')
     <div class="container-xl">
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <h2 class="page-title font-weight-bold text-uppercase">
-                        All New Series
-                    </h2>
-                </div>
-            </div>
-        </div>
         <div class="row">
             @foreach ($series as $data)
                 <div class="col-12 col-lg-4">
-                    <a class="text-dark" href="{{ route('series.show', $data->slug) }}">
+                    <a class="text-dark" href="{{ route('member.series.show', $data->series->slug) }}">
                         <div class="card card-stacked">
-                            <div class="ribbon bg-primary">New</div>
                             <div class="card-body">
-                                <h3 class="card-title">{{ $data->name }}</h3>
-                                <p class="text-muted">{{ $data->description }}</p>
+                                <h3 class="card-title">{{ $data->series->name }}</h3>
+                                <p class="text-muted">{{ $data->series->description }}</p>
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        {{ $data->videos->count() }} Episode
-                                    </div>
-                                    <div>
-                                        Rp. {{ number_format($data->price) }}
+                                        {{ $data->series->videos->count() }} Episode
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +35,7 @@
                                             <path d="M15 12v-2"></path>
                                             <path d="M12 12v-1"></path>
                                         </svg>
-                                        {{ $data->level }}
+                                        {{ $data->series->level }}
                                     </div>
                                     <div class="{{ $data->status == 1 ? 'text-teal' : 'text-danger' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -71,12 +54,6 @@
                     </a>
                 </div>
             @endforeach
-            <div class="col-12">
-                <div class="d-flex justify-content-center">
-                    <x-button.button-link title="See More Series" url="{{ route('series.index') }}" icon="bars"
-                        class="btn btn-dark" />
-                </div>
-            </div>
         </div>
     </div>
 @endsection
