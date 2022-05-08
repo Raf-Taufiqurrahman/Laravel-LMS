@@ -34,6 +34,8 @@ class LoginController extends Controller
     {
         if ($user->hasRole('admin|instructor')) {
             return redirect()->route('admin.dashboard');
+        }else{
+            return redirect()->route('member.dashboard');
         }
 
         return redirect()->route('admin.series.index');

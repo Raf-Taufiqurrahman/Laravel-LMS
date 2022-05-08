@@ -12,7 +12,7 @@
         <div class="navbar-nav flex-row order-md-last">
             @guest
                 <a href="{{ route('login') }}" class="nav-item mr-2">Login</a>
-                <a href="{{ route('login') }}" class="nav-item">Register</a>
+                <a href="{{ route('register') }}" class="nav-item">Register</a>
             @endguest
             @auth
                 <div class="nav-item dropdown d-none d-md-flex mr-3">
@@ -38,7 +38,7 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        @hasanyrole('admin|instructor')
+                        @role('admin')
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
@@ -66,7 +66,7 @@
                                 </svg>
                                 Dashboard
                             </a>
-                        @endhasanyrole
+                        @endrole
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
