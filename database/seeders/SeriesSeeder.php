@@ -15,7 +15,7 @@ class SeriesSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0; $i < 10; $i++){
+        for($i=1; $i < 10; $i++){
             Series::create([
                 'user_id' => 1,
                 'name' => 'Series '.$i,
