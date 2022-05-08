@@ -21,6 +21,7 @@ class TagController extends Controller
         // tags with search and paginate
         $tags = Tag::search('name')->paginate(10);
 
+        // return view
         return view('admin.tag.index', compact('tags'));
     }
 

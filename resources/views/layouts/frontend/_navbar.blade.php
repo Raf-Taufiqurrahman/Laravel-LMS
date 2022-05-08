@@ -38,7 +38,7 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        @hasanyrole('admin|role')
+                        @hasanyrole('admin|instructor')
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
@@ -53,7 +53,7 @@
                                 Dashboard
                             </a>
                         @else
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('member.dashboard') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
                                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -133,7 +133,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('articles') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="24"
                                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"

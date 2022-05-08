@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-nav flex-row order-md-last">
-            <div class="nav-item dropdown d-none d-md-flex mr-3">
+            {{-- <div class="nav-item dropdown d-none d-md-flex mr-3">
                 <a href="" class="nav-link px-0" data-toggle="dropdown" tabindex="-1">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
                     <img src="{{ Auth::user()->avatar }}" class="avatar" />

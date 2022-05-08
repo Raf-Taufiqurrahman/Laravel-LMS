@@ -19,11 +19,11 @@
                                 status="{{ $series->status == 1 ? 'Compeleted' : 'Developed' }}"
                                 episode="{{ $series->videos->count() }} Episode" members="{{ $members }} Members" />
                             <div class="mt-2">
-                                @if ($userSeries->count() > 0)
+                                @if ($purchased)
                                     <div class="alert alert-success" role="alert">
                                         <i class="fas fa-user-check mr-1"></i>
                                         Licensed to : {{ Auth::user()->name }} ({{ Auth::user()->email }}) —
-                                        {{ Carbon\Carbon::parse($userSeries[0]->date_transfer ?? '')->format('d F Y') }}
+                                        {{ Carbon\Carbon::parse($transaction[0]->date_transfer)->format('d F Y') }}
                                     </div>
                                 @else
                                     <form action="{{ route('carts.store', $series->slug) }}" method="POST">
