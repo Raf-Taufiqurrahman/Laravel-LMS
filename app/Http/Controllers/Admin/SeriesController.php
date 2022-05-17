@@ -56,6 +56,7 @@ class SeriesController extends Controller
         // call method uploadCover from trait hasCover
         $cover = $this->uploadCover($request, $path = 'public/covers/', $name='cover');
 
+        // get request data from input
         $data = $request->all();
         $data['cover'] = $cover->hashName();
 
@@ -120,8 +121,10 @@ class SeriesController extends Controller
         // get series by slug
         $series = Series::where('slug', $slug)->first();
 
+        // get request data from input except cover
         $data = $request->except('cover');
 
+        // update series
         $series->update($data);
 
         // check if user upload new cover
@@ -129,6 +132,7 @@ class SeriesController extends Controller
             // delete old cover
             Storage::disk('local')->delete($path. basename($series->cover));
 
+            // update series cover
             $series->update([
                 'cover' => $cover->hashName()
             ]);

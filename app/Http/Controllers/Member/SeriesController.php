@@ -22,7 +22,7 @@ class SeriesController extends Controller
     public function index()
     {
         // get transaction by user id
-        $transaction = Transaction::where('user_id', Auth::id())->where('status', 1)->get();
+        $transaction = Transaction::where('user_id', Auth::id())->verified()->get();
 
         // if transaction is not empty
         if($transaction->count() > 0){

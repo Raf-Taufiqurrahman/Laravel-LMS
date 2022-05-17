@@ -10,4 +10,9 @@ trait HasScope
             $search = $search->where($type, 'like', '%'.request()->q.'%');
         });
     }
+
+    public function scopeVerified($query)
+    {
+        return $query->where('status', 1);
+    }
 }

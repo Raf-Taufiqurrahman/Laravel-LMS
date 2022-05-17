@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Member;
 
 use App\Models\Transaction;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\Auth;
