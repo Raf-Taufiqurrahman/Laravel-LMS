@@ -2,9 +2,11 @@
 
 namespace App\Traits;
 
+use App\Models\User;
 use App\Models\Series;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 trait HasSeries
@@ -39,5 +41,20 @@ trait HasSeries
 
         // return members
         return $members;
+    }
+
+    public function bestSeries()
+    {
+        $bestSeries = DB::table('transaction_details')
+                        ->join('series', 'series.id', '=', 'transaction_details.series_id')
+                        ->join('users', 'users.id', '=', 'series.user_id')
+                        ->join('transactions', 'transactions.id', '=', 'transaction_details.transaction_id')
+                        ->addSelect(DB::raw('series.name as name, users.name as author, count(transaction_details.series_id) as total'))
+                        ->groupBy('transaction_details.series_id')
+                        ->paginate(7);
+
+        return $bestSeries;
+
+
     }
 }

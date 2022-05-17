@@ -23,7 +23,6 @@ class TagSeeder extends Seeder
         $tagName = Collect(['Laravel', 'React Js', 'Tailwind Css', 'Bootstrap', 'Vue Js', 'Inertia Js', 'Api']);
 
         $tagName->each(function ($name) use ($colorData) {
-
             Tag::create([
                 'name' => $name,
                 'color' => $colorData->random()

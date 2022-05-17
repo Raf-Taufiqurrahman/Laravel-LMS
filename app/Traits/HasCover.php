@@ -4,13 +4,13 @@ namespace App\Traits;
 
 trait HasCover
 {
-    public function uploadCover($request)
+    public function uploadCover($request, $path, $name)
     {
         $cover = null;
 
-        if($request->file('cover')){
-            $cover = $request->file('cover');
-            $cover->storeAs('public/covers/', $cover->hashName());
+        if($request->file($name)){
+            $cover = $request->file($name);
+            $cover->storeAs($path, $cover->hashName());
         }else{
 
         }
