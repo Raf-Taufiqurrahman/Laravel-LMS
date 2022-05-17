@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\HasImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    use HasImage;
+
     public function index()
     {
         // get user login
@@ -22,28 +25,25 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request, User $user)
     {
+        // call method uploadImage from trait hasImage
+        $avatar = $this->uploadImage($request, $path = 'public/avatars/', $name='avatar');
+
+        // get request data from input
+        $data = $request->except('avatar');
+
+        // update user
+        $user->update($data);
+
+        // check if user upload new avatar
         if($request->file('avatar')){
             // delete old avatar
             Storage::disk('local')->delete('public/avatars/'. basename($user->avatar));
 
-            // upload new avatar
-            $avatar = $request->file('avatar');
-            $avatar->storeAs('public/avatars/', $avatar->hashName());
-
-            // update profile with avatar
+            // update user avatar
             $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
                 'avatar' => $avatar->hashName(),
             ]);
-        }else{
-            // update profile without avatar
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-            ]);
         }
-
         // return back with toastr
         return back()->with('toast_success', 'Profile updated successfully');
     }
