@@ -3,12 +3,16 @@
 namespace App\Traits;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
 
 trait HasSlug
 {
-    public function setNameAttribute($value)
+    public static function bootHasSlug()
     {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value) . '-' . Str::random(5);
+        static::creating(function ($model) {
+            if(Schema::hasColumn($model->getTable(), 'slug')){
+                $model->slug = Str::slug($model->name ?? $model->title);
+            }
+        });
     }
 }

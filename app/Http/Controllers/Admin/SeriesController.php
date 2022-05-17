@@ -54,17 +54,13 @@ class SeriesController extends Controller
     public function store(SeriesStoreRequest $request)
     {
         // call method uploadCover from trait hasCover
-        $cover = $this->uploadCover($request);
+        $cover = $this->uploadCover($request, $path = 'public/covers/', $name='cover');
+
+        $data = $request->all();
+        $data['cover'] = $cover->hashName();
 
         // create new series
-        $series = Auth::user()->series()->create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'level' => $request->level,
-            'status' => $request->status,
-            'cover' => $cover->hashName(),
-        ]);
+        $series = Auth::user()->series()->create($data);
 
         // create series with tags by request
         $series->tags()->sync($request->tags);
@@ -119,35 +115,24 @@ class SeriesController extends Controller
     public function update(SeriesUpdateRequest $request, $slug)
     {
         // call method uploadCover from trait hasCover
-        $cover = $this->uploadCover($request);
+        $cover = $this->uploadCover($request, $path = 'public/covers/', $name='cover');
 
         // get series by slug
         $series = Series::where('slug', $slug)->first();
 
-        // check if user upload new cover
-        if($request->file('cover')){
-            // delete old cover
-            Storage::disk('local')->delete('public/covers/'. basename($series->cover));
+        $data = $request->except('cover');
 
-            // update new series with cover
+        $series->update($data);
+
+        // check if user upload new cover
+        if($request->file($name)){
+            // delete old cover
+            Storage::disk('local')->delete($path. basename($series->cover));
+
             $series->update([
-                'name' => $request->name,
-                'description' => $request->description,
-                'price' => $request->price,
-                'level' => $request->level,
-                'status' => $request->status,
-                'cover' => $cover->hashName(),
+                'cover' => $cover->hashName()
             ]);
         }
-
-        // update new series without cover
-        $series->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'level' => $request->level,
-            'status' => $request->status,
-        ]);
 
         // update series with tags by request
         $series->tags()->sync($request->tags);
