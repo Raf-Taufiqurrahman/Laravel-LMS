@@ -1,0 +1,5 @@
+---
+deployment:
+tasks:
+- export DEPLOYPATH=/home/rafk8631/public_html/course/RaptriDev/
+- /bin/cp -r * $DEPLOYPATH
