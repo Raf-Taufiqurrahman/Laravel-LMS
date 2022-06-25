@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Tag;
 use App\Models\Video;
 use App\Models\Series;
-use App\Traits\HasCover;
+use App\Traits\HasImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ use App\Http\Requests\SeriesUpdateRequest;
 
 class SeriesController extends Controller
 {
-    use HasCover;
+    use HasImage;
     /**
      * Display a listing of the resource.
      *
