@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login - RaptriDev</title>
+    <title>Login - WeLearn</title>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <meta name="msapplication-TileColor" content="#206bc4" />
     <meta name="theme-color" content="#206bc4" />
@@ -28,7 +28,7 @@
                 @csrf
                 <div class="card-body">
                     <h1 class="text-center mb-3 font-weight-bold text-azure">
-                        Raptri<span class="text-red">Dev</span>
+                        We<span class="text-red">Learn</span>
                     </h1>
                     <div class="mb-3">
                         <label class="form-label">Email address</label>
