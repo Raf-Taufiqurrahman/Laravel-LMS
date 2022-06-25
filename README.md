@@ -1,5 +1,5 @@
-## RaptriDev
-RaptriDev adalah sebuah website online course yang saya bangun menggunakan laravel 9 tujuan pembuatan aplikasi adalah untuk pembelajaran. 
+## WeLearn
+WeLearn adalah sebuah website online course yang saya bangun menggunakan laravel 9 tujuan pembuatan aplikasi adalah untuk pembelajaran. 
 Aplikasi ini masih dalam tahapan pengembangan baik dari fitur, clean code, dan juga peforma.
 
 ![Imgur](https://imgur.com/B8mUH8u.png)
